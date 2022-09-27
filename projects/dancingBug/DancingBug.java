@@ -13,11 +13,13 @@ public class DancingBug extends Bug
     }
     public void act()
     {
-        if(canmove()) move();
-        if(index == dancearray.length) index = 0;
+        if(canMove()) move();
         else {
-            for(int i = 0; i < dancearray[index]; i++) turn();
-            index++;
+            if(index == dancearray.length) index = 0;
+            else {
+                for(int i = 0; i < dancearray[index]; i++) turn();
+                index++;
+            }
         }
     }
 }
