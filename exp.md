@@ -42,4 +42,4 @@ Ubuntu22.04.1配置Java8环境
 ####Exercises
 `1. `如果空间足够大且路径无障碍**CircleBug**路线呈正六边形
 `2. `/projects/spiralBug
-`3. `
+`3. `/projects/zBug

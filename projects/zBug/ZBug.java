@@ -1,7 +1,7 @@
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.grid.Location;
-import info.gridworld.actor.Bug;
+
 
 public class ZBug extends Bug
 {
@@ -19,8 +19,8 @@ public class ZBug extends Bug
 
     public void act()
     {
-        if(t >= 2) return;
-        if (steps < sideLength)
+        if(t > 2) return;
+        if (steps < sideLength && canMove())
         {
             move();
             steps++;
@@ -28,7 +28,7 @@ public class ZBug extends Bug
         else
         {
             t++;
-            if(t == 1) setDirection(Location.SOUTHEAST);
+            if(t == 1) setDirection(Location.SOUTHWEST);
             if(t == 2) setDirection(Location.EAST);
             steps = 0;
         }
