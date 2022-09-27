@@ -41,4 +41,5 @@ Ubuntu22.04.1配置Java8环境
 `7. `当**BoxBug**执行完构造函数到第一次移动之前；当**steps>sidelegth**或者无法移动时，再次执行act()方法会将steps置0
 ####Exercises
 `1. `如果空间足够大且路径无障碍**CircleBug**路线呈正六边形
-`2. `
+`2. `/projects/spiralBug
+`3. `

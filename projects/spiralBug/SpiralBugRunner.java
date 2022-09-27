@@ -6,6 +6,7 @@ import java.awt.Color;
 
 public class SpiralBugRunner 
 {
+    @SuppressWarnings("unchecked")
     public static void main(String[] args)
     {
         UnboundedGrid grid = new UnboundedGrid<SpiralBug>();
