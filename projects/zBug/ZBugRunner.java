@@ -3,7 +3,7 @@ import info.gridworld.grid.Location;
 
 import java.awt.Color;
 
-public class CircleBugRunner 
+public class ZBugRunner 
 {
     public static void main(String[] args)
     {
