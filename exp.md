@@ -1,6 +1,8 @@
 ##GridWorld
 Ubuntu22.04.1配置Java8环境
 [toc]
+
+---
 ###Part1
 ####Set1
 `1. `当bug八个方向都有rock的时候无法移动到一个新位置
@@ -30,6 +32,7 @@ Ubuntu22.04.1配置Java8环境
 `3.	`void setColor(java.awt.Color)
 `4.	`bug会消失
 
+---
 ###Part2
 ####Set2
 `1. `规定**BoxBug**移动步数，移动达到规定步数将会执行**turn()**函数
@@ -43,3 +46,28 @@ Ubuntu22.04.1配置Java8环境
 `1. `如果空间足够大且路径无障碍**CircleBug**路线呈正六边形
 `2. `/projects/spiralBug
 `3. `/projects/zBug
+`4. `/projects/dancingBug
+`5. `
+初始化一个BoxBug对象
+ `BoxBug tom = new BoxBug(5);`
+使用ActorWorld中的add()方法
+ `world.add(new Location(1, 2), tom);`
+
+---
+###Part3
+####Set3
+`1. ` `int row1 = loc1.getRow();`
+`2. ` `false`
+`3. ` 一个Location类，row和col分别为4和4
+`4. `135
+`5. `一个location对应的方格的八个方向正好是八个方格，同时这八个方格与其row值和col值相差0或1，则可以根据不同方向来计算对应方格location
+####Set4
+`1. `通过`getNumRow()`和`getNumCols()`函数获取grid的行数和列数，然后遍历每一个`location`，使用`get(Location loc)`函数来获取每一个location中的object，当其返回值不为空，则将返回值加入到一个ArrayList中，遍历完成后读取ArrayList的大小；grid的方格数减去物体数即为空方格数
+`2. `使用`isValid(Location loc)`函数，即通过`getNumRow()`和`getNumCols()`函数获取grid的行数和列数，然后比较(10, 10)是否在范围内
+`3. `因为Grid是一个interface，我们可以在AbstractGrid、BoundedGrid和UnboundedGrid中找到方法的实现
+`4. `不一定，当使用数组时，可以使用[]来直接访问数组元素；而ArrayList可以动态扩充，数组不行
+####Set5
+`1. ` `grid location direction color`
+`2. `北方和蓝色
+`3. `因为Actor类需要有成员变量，而接口不能有成员变量
+`4. `/projects/actorTest
