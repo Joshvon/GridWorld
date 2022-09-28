@@ -71,3 +71,5 @@ Ubuntu22.04.1配置Java8环境
 `2. `北方和蓝色
 `3. `因为Actor类需要有成员变量，而接口不能有成员变量
 `4. `/projects/actorTest
+`5. `使用setDirection()方法
+`actor.setDirection(actor.getDirection() + 90);`

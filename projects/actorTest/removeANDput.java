@@ -3,8 +3,9 @@ import info.gridworld.grid.Location;
 import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 
-public class removeTwice
+public class removeANDput
 {
+    @SuppressWarnings("unchecked")
     public static void main(String[] args)
     {
         ActorWorld world = new ActorWorld();

@@ -2,7 +2,7 @@ import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
 import info.gridworld.actor.Actor;
 
-public class BugRunner
+public class putTwice
 {
     public static void main(String[] args)
     {
