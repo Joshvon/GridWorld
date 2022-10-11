@@ -98,5 +98,5 @@ flower.putSelfInGrid(gr, loc);
 `b. ` 转向
 `c. ` 转向
 `d. ` 转向
-`e. ` 
-`f. ` 
+`e. ` 当两个jumper下一个位置是相同的，则一个到达，另一个转向；若不是则都能到达
+`f. ` 无
