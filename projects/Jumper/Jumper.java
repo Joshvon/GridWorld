@@ -16,7 +16,7 @@ public class Jumper extends Bug
         if (!gr.isValid(next_next))
             return false;
         Actor neighbor2 = gr.get(next_next);
-        return (neighbor2 == null) || (neighbor2 instanceof Flower)
+        return (neighbor2 == null) || (neighbor2 instanceof Flower);
     }
     public void jump()
     {
