@@ -29,7 +29,7 @@ public class Jumper extends Bug
         Location next = loc.getAdjacentLocation(getDirection());
         Location next_next = next.getAdjacentLocation(getDirection());
         if (gr.isValid(next_next))
-            moveTo(next);
+            moveTo(next_next);
         else
             removeSelfFromGrid();
         Flower flower = new Flower(getColor());
