@@ -1,5 +1,8 @@
 import info.gridworld.actor.Bug;
 import info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Flower;
 
 public class Jumper extends Bug
 {
@@ -12,7 +15,6 @@ public class Jumper extends Bug
         if(!gr.isValid(next))
             return false;
         Location next_next = next.getAdjacentLocation(getDirection());
-        Actor neighbor1 = gr.get(next);
         if (!gr.isValid(next_next))
             return false;
         Actor neighbor2 = gr.get(next_next);
