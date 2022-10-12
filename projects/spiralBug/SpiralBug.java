@@ -1,3 +1,5 @@
+package spiralBug;
+
 import info.gridworld.actor.Bug;
 
 public class SpiralBug extends Bug

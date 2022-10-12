@@ -1,3 +1,5 @@
+package actorTest;
+
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Actor;
 

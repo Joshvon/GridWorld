@@ -1,3 +1,5 @@
+package dancingBug;
+
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 

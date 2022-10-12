@@ -16,6 +16,8 @@
  * @author Barbara Cloud Wells
  */
 
+package boxBug;
+
 import info.gridworld.actor.Bug;
 
 /**

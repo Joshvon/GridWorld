@@ -16,6 +16,8 @@
  * @author Cay Horstmann
  */
 
+package critters;
+
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Grid;

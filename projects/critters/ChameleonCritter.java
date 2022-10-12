@@ -16,8 +16,11 @@
  * @author Cay Horstmann
  */
 
+package critters;
+
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
+import info.gridworld.actor.Flower;
 import info.gridworld.grid.Location;
 
 import java.util.ArrayList;
@@ -49,7 +52,12 @@ public class ChameleonCritter extends Critter
      */
     public void makeMove(Location loc)
     {
+        Location location = getLocation();      //在移动前获取当前位置
         setDirection(getLocation().getDirectionToward(loc));
         super.makeMove(loc);
+        if(!location.equals(loc)) {             //若移动到了新位置
+            Flower flower = new Flower(getColor());
+            flower.putSelfInGrid(getGrid(), location);
+        }
     }
 }

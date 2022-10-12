@@ -16,6 +16,8 @@
  * @author Cay Horstmann
  */
 
+package critters;
+
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Flower;

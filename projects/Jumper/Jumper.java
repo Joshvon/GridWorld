@@ -1,3 +1,5 @@
+package Jumper;
+
 import info.gridworld.actor.Bug;
 import info.gridworld.grid.Location;
 import info.gridworld.grid.Grid;

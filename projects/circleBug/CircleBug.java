@@ -1,4 +1,4 @@
-import info.gridworld.actor.Bug;
+package circleBug;
 
 import info.gridworld.actor.Bug;
 

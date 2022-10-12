@@ -1,3 +1,5 @@
+package zBug;
+
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.grid.Location;

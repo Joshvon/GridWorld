@@ -14,7 +14,9 @@
  * @author Cay Horstmann
  */
 
-import info.gridworld.actor.ActorWorld;
+package firstProject;
+
+ import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Rock;
 

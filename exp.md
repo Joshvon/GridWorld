@@ -100,3 +100,65 @@ flower.putSelfInGrid(gr, loc);
 `d. ` 转向
 `e. ` 当两个jumper下一个位置是相同的，则一个到达，另一个转向；若不是则都能到达
 `f. ` 无
+
+---
+### Part4
+#### Set7
+`1. `
++ public void act()
++ public ArrayList<Actor> getActors()
++ public void processActors(ArrayList<Actor> actors)
++ public ArrayList<Location> getMoveLocations()
++ public Location selectMoveLocation(ArrayList<Location> locs)
++ public void makeMove(Location loc)
+
+`2. `
++ public ArrayList<Actor> getActors()
++ public void processActors(ArrayList<Actor> actors)
++ public ArrayList<Location> getMoveLocations()
++ public Location selectMoveLocation(ArrayList<Location> locs)
++ public void makeMove(Location loc)
+
+`3. ` 可以，因为有些critter只选择部分而不是周围所有actor进行操作
+`4. `
++ 吃掉周围的花
++ 清除周围的石头
++ 若前面不为空将其移至后面
+
+`5. `
++ public ArrayList<Location> getMoveLocations()
+  获取可以移动的位置
++ public Location selectMoveLocation(ArrayList<Location> locs)
+  选取其中一个作为移动的位置
++ public void makeMove(Location loc)
+  移至选中的位置
+
+`6. ` 因为 **Critter** extend了Actor类，Critter没有构造函数Java会自动构造一个默认的构造函数，调用 **super()** 进而调用Actor的构造函数
+
+#### Set8
+`1. ` 因为 **Critter** 中的act方法调用了`public void processActors(ArrayList<Actor> actors)`和`public void makeMove(Location loc)`而   **ChamelonCritter** 重写了这两个方法
+
+`2. ` 因为 **ChameleonCritter** 中需要更改方向在进行移动，而调用 **super.makeMove(loc)** 方法是表示调用 **Critter** 中的而不是自身的，如果没用**super** 会进入递归导致死循环
+
+`3. `
+```Java
+public void makeMove(Location loc)
+{
+    Location location = getLocation();      //在移动前获取当前位置
+    setDirection(getLocation().getDirectionToward(loc));
+    super.makeMove(loc);
+    if(!location.equals(loc)) {             //若移动到了新位置
+        Flower flower = new Flower(getColor());
+        flower.putSelfInGrid(getGrid(), location);
+    }
+}
+```
+
+`4. ` 因为 **ChameleonCritter** 本身就是需要获取周围的Actor与 **Critter** 中的一样，又因为继承了 **Critter** 所以不需要override了
+
+`5. ` Actor中实现了该方法，则其子类都可以使用该方法
+
+`6. ` 因为 **Critter** 是 **Actor** 的子类，则可以直接使用`public Grid<Actor> getGrid()`方法
+
+#### Set9
+`1. ` **CrabCritter**
