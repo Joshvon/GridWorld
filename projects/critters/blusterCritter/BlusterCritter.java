@@ -9,6 +9,8 @@ import java.awt.Color;
 
 public class BlusterCritter extends Critter
 {
+    private static final double DARKENING_FACTOR = 0.05;
+
     private int c;
 
     public BlusterCritter(int c)

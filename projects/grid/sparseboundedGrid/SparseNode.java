@@ -19,7 +19,7 @@ public class SparseNode
     public int getCol() {
         return col;
     }
-    public int getObject() {
+    public Object getObject() {
         return object;
     }
     public SparseNode getNext() {

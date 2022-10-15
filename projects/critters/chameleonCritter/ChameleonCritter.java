@@ -33,6 +33,7 @@ import java.awt.Color;
  */
 public class ChameleonCritter extends Critter
 {
+    private static final double DARKENING_FACTOR = 0.05;
     /**
      * Randomly selects a neighbor and changes this critter's color to be the
      * same as that neighbor's. If there are no neighbors, no action is taken.

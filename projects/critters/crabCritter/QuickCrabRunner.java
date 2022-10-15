@@ -1,4 +1,4 @@
-package critters.crabCritters;
+package critters.crabCritter;
 
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Critter;

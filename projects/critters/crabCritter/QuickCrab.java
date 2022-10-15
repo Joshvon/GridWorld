@@ -19,7 +19,7 @@ public class QuickCrab extends CrabCritter
             Location loc2 = loc1.getAdjacentLocation(getDirection() + dir);
             if (getGrid().isValid(loc2) && getGrid().get(loc2) == null) locs.add(loc2);
         }
-        if(locs.size == 0) return super.getMoveLocations();
+        if(locs.size() == 0) return super.getMoveLocations();
         return locs;
     }
 }

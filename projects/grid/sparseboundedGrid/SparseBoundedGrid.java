@@ -69,7 +69,7 @@ public class SparseBoundedGrid extends AbstractGrid<Object>
 
         Object oldOccupant = get(loc);
         SparseNode node = head[loc.getRow()];
-        node.addByHead(obj);
+        node.addByHead(new SparseNode(loc.getCol(), obj));
         return oldOccupant;
     }
 
@@ -80,7 +80,7 @@ public class SparseBoundedGrid extends AbstractGrid<Object>
                     + " is not valid");
         
         Object r = get(loc);
-        head[loc.getRow()].removeByHead(loc.getCol());
+        head[loc.getRow()].deleteByHead(loc.getCol());
         return r;
     }
 }
