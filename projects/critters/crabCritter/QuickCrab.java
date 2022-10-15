@@ -1,5 +1,7 @@
 package critters.crabCritter;
 
+import java.util.ArrayList;
+
 import info.gridworld.grid.Location;
 
 public class QuickCrab extends CrabCritter

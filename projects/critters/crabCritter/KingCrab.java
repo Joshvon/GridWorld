@@ -1,4 +1,6 @@
-package critter.crabCritter;
+package critters.crabCritter;
+
+import java.util.ArrayList;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.grid.Location;

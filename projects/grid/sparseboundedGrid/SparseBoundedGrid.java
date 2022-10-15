@@ -1,6 +1,7 @@
 package grid.sparseboundedGrid;
 
 import info.gridworld.grid.Location;
+import info.gridworld.grid.AbstractGrid;
 
 public class SparseBoundedGrid extends AbstractGrid<Object>
 {
