@@ -4,7 +4,7 @@ import info.gridworld.grid.Location;
 import info.gridworld.grid.AbstractGrid;
 import java.util.ArrayList;
 
-public class SparseBoundedGrid extends AbstractGrid<Object>
+public class SparseBoundedGrid extends AbstractGrid<Actor>
 {
     private SparseNode[] head;
     private int rows;
@@ -38,7 +38,7 @@ public class SparseBoundedGrid extends AbstractGrid<Object>
     public ArrayList<Location> getOccupiedLocations() {
         ArrayList<Location> theLocations = new ArrayList<Location>();
         for(int i = 0; i < getNumRows(); i++) {
-            SpaeseNode node = head[i];
+            SparseNode node = head[i];
             while(node.getNext() != null) {
                 node = node.getNext();
                 Location loc = new Location(i, node.getCol());
