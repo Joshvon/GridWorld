@@ -1,9 +1,12 @@
-package critter.crabCritter;
+package critters.crabCritter;
 
 import info.gridworld.grid.Location;
 
 public class QuickCrab extends CrabCritter
 {
+    public QuickCrab() {
+        super();
+    }
     public ArrayList<Location> getMoveLocations()
     {
         ArrayList<Location> locs = new ArrayList<Location>();

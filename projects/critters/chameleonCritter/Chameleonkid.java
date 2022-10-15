@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class ChameleonKid extends ChameleonCritter
 {
+    public ChameleonKid() {
+        super();
+    }
     public ArrayList<Actor> getActors()
     {
         ArrayList<Actor> actors = new ArrayList<Actor>();

@@ -5,6 +5,10 @@ import info.gridworld.grid.Location;
 
 public class KingCrab extends CrabCritter
 {
+    public KingCrab() {
+        super();
+    }
+    
     public void processActors(ArrayList<Actor> actors)
     {
         for (Actor a : actors)
