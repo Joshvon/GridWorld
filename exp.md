@@ -161,4 +161,58 @@ public void makeMove(Location loc)
 `6. ` 因为 **Critter** 是 **Actor** 的子类，则可以直接使用`public Grid<Actor> getGrid()`方法
 
 #### Set9
-`1. ` **CrabCritter**
+`1. ` **CrabCritter** 的该方法是吃掉rock和critter以外的actor与Critter类一样，所以不需要override
+
+`2. ` **CrabCritter** 使用 `public ArrayList<Actor> getActors()` 查找其前面、左前方和右前方的Actor，然后使用 `public void processActors(ArrayList<Actor> actors)` 将不为rock或者critter吃掉
+
+`3. ` **CrabCritter** 使用`public ArrayList<Location> getLocationsInDirections(int[] directions)` 并传入前面、左前方和右前方三个方向的数组参数可以获得该三个方向的位置列表
+
+`4. ` `(4, 3)` `(4, 4)` `(4, 6)`
+
+`5. ` **CrabCritter** 和 **Critter** 都是随机选取一个位置移动； **CrabCritter**只能左右两个方向随机选取移动， **Critter** 从八个方向随机选取，当不能移动时 **CrabCritter** 能转向，而 **Critter** 不能
+
+`6. ` `if (loc.equals(getLocation()))` 当要移动到的位置，即makeMove中参数loc与当前位置相同则转向
+
+`7. ` **CrabCritter** 继承了 **Critter** 的processActors方法，该方法不会将同是 **Critter** 吃掉
+```Java
+if (!(a instanceof Rock) && !(a instanceof Critter))
+  a.removeSelfFromGrid();
+```
+
+---
+
+### Part5
+#### set10
+`1. ` **BoundedGrid** 类 和 **UnboundedGrid** 类
+`2. ` `public ArrayList<Location> getValidAdjacentLocations(Location loc)` 因为其他方法都会直接或间接调用该方法来获取location
+`3. ` `public ArrayList<Location> getOccupiedAdjacentLocations(Location loc)`，由 **AbstractGrid** 类实现 和 `public E get(Location loc)`，由 **BoundedGrid** 类 和 **UnboundedGrid** 类实现
+`4. ` 因为`getEmptyAdjacentLocations`方法需要返回的网格位置是要求没有object的，而通过 `get` 可以获得给定网格位置对象的方法，以用来判断该位置有无object
+`5. ` 导致其相邻位置从八个变为四个，分别为东南西北四个方向的邻近位置
+
+#### set11
+`1. ` 保证BoundedGrid在构造时occupantArray不会失败
+```Java
+if (rows <= 0)
+  throw new IllegalArgumentException("rows <= 0");
+if (cols <= 0)
+  throw new IllegalArgumentException("cols <= 0");
+occupantArray = new Object[rows][cols];
+```
+`2. ` `return occupantArray[0].length;` 返回 **occupantArray**二维数组的列数
+`3. ` 被判断的location行的值大于或等于0且小于BoundGrid行数，列的值大于或等于0且小于BoundGrid列数
+```Java
+return 0 <= loc.getRow() && loc.getRow() < getNumRows()
+       && 0 <= loc.getCol() && loc.getCol() < getNumCols();
+```
+`4. ` `ArrayList<Location>` 时间复杂度为O(row * col) row和col分别为**occupantArray**行数和列数
+`5. ` 返回类型为E，即**occupantArray**中存储的类型；需要参数类型为Location，时间复杂度为O(1)
+`6. ` 要在网格添加物体的位置超出网格范围或者要添加的物体为空会抛出异常；时间复杂度为O(1)
+`7. ` 返回类型为E，即**occupantArray**中存储的类型；当尝试去删去没有物体的空位置时返回值为空；时间复杂度为O(1)
+`8. ` 5、6和7都是最优的，4时间复杂度较高，可以使用HashMap来存储以达到更高效的实现
+
+### set12
+`1. ` `public int hashCode()` 和 `public boolean equals(Object other)` 方法；TreeMap要求地图的键时可比较的，而Location类实现了`public int compareTo(Object other)`实现了比较
+`2. ` 在 **UnboundedGrid**中用位置作为key键存储相应位置的物体，而null不是一个有效位置，则需要判断location是否为null；在 **BoundedGrid** 中的isValid()方法会若其为空会抛出空指针异常
+`3. ` O(1); O(logn)
+`4. `
+`5. ` 可以，`getOccupiedLocations()` 方法时间复杂度减小

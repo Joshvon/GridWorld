@@ -16,7 +16,7 @@
  * @author Cay Horstmann
  */
 
-package critters;
+package critters.crabCritter;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;

@@ -16,7 +16,7 @@
  * @author Cay Horstmann
  */
 
-package critters;
+package critters.chameleonCritter;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
@@ -39,8 +39,10 @@ public class ChameleonCritter extends Critter
     public void processActors(ArrayList<Actor> actors)
     {
         int n = actors.size();
-        if (n == 0)
+        if (n == 0){
+            darken();
             return;
+        }
         int r = (int) (Math.random() * n);
 
         Actor other = actors.get(r);
@@ -59,5 +61,17 @@ public class ChameleonCritter extends Critter
             Flower flower = new Flower(getColor());
             flower.putSelfInGrid(getGrid(), location);
         }
+    }
+
+    /**
+     * Darken the color
+     */
+    public void darken()
+    {
+        Color c = getColor();
+        int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
+        int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
+        int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
+        setColor(new Color(red, green, blue));
     }
 }
