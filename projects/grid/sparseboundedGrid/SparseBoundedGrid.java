@@ -2,6 +2,7 @@ package grid.sparseboundedGrid;
 
 import info.gridworld.grid.Location;
 import info.gridworld.grid.AbstractGrid;
+import java.util.ArrayList;
 
 public class SparseBoundedGrid extends AbstractGrid<Object>
 {
@@ -38,8 +39,8 @@ public class SparseBoundedGrid extends AbstractGrid<Object>
         ArrayList<Location> theLocations = new ArrayList<Location>();
         for(int i = 0; i < getNumRows(); i++) {
             SpaeseNode node = head[i];
-            while(node.next != null) {
-                node = node.next;
+            while(node.getNext() != null) {
+                node = node.getNext();
                 Location loc = new Location(i, node.getCol());
                 if (get(loc) != null)
                     theLocations.add(loc);
@@ -52,8 +53,8 @@ public class SparseBoundedGrid extends AbstractGrid<Object>
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
         SparseNode node = head[loc.getRow()];
-        while(node.next != null) {
-            node = node.next;
+        while(node.getNext() != null) {
+            node = node.getNext();
             if(node.getCol() == loc.getCol()) return node.getObject();
         }
         return null;

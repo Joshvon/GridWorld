@@ -16,7 +16,7 @@
       </copy>
    </target>
    <target name="compile" depends="init">
-        <javac srcdir="framework" destdir="classes">
-        <javac srcdir="projects" destdir="classes">
+        <javac srcdir="framework" destdir="classes"/>
+        <javac srcdir="projects" destdir="classes"/>
    </target>
 </project>

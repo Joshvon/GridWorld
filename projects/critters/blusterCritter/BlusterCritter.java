@@ -1,10 +1,11 @@
-package critters.blusterCritter;
+package critter.blusterCritter;
 
 import java.util.ArrayList;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
+import java.awt.Color;
 
 public class BlusterCritter extends Critter
 {

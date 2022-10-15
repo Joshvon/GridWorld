@@ -9,7 +9,7 @@ public class RockHound extends Critter
     public RockHound() {
         super();
     }
-    public void processActors(ArrayList<Actors> actors)
+    public void processActors(ArrayList<Actor> actors)
     {
         for (Actor a : actors)
         {

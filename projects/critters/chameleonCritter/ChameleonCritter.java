@@ -24,6 +24,7 @@ import info.gridworld.actor.Flower;
 import info.gridworld.grid.Location;
 
 import java.util.ArrayList;
+import java.awt.Color;
 
 /**
  * A <code>ChameleonCritter</code> takes on the color of neighboring actors as

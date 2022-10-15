@@ -1,3 +1,5 @@
+package grid.sparseboundedGrid;
+
 public class SparseNode 
 {
     private int col;
@@ -19,6 +21,9 @@ public class SparseNode
     }
     public int getObject() {
         return object;
+    }
+    public SparseNode getNext() {
+        return next;
     }
     public void addByHead(SparseNode new_node) {
         SparseNode node = this;
