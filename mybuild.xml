@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="GridWorld" default="init" basedir=".">
+<project name="GridWorld" default="compile" basedir=".">
     <target name="init">
       <mkdir dir="classes"/>
       <copy todir="classes">
@@ -8,11 +8,15 @@
             <include name="**/*.properties"/>
             <include name="**/*.html"/>
          </fileset>
-         <fileset dir="project">
+         <fileset dir="projects">
             <include name="**/*.gif"/>
             <include name="**/*.properties"/>
             <include name="**/*.html"/>
          </fileset>
       </copy>
+   </target>
+   <target name="compile" depends="init">
+        <javac srcdir="framework" destdir="classes">
+        <javac srcdir="projects" destdir="classes">
    </target>
 </project>
