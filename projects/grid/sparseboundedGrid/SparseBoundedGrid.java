@@ -66,7 +66,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>
         E oldOccupant = remove(loc);
 
         SparseNode oldhead = head[loc.getRow()];
-        SparseGridNode newhead = new SparseGridNode(obj, loc.getCol(), oldhead, null);
+        SparseNode newhead = new SparseNode(obj, loc.getCol(), oldhead, null);
         if(oldhead != null) {
             oldhead.setPrev(newhead);
         }

@@ -10,6 +10,8 @@ public class SparseBoundedGridRunner {
     {
         ActorWorld world = new ActorWorld();
         world.addGridClass("SparseBoundedGrid");
+        world.addGridClass("SparseBoundedGrid2");
+        world.addGridClass("UnboundedGrid");
         world.add(new Location(2, 2), new Critter());
         world.show();
     }
