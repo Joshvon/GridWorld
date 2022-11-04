@@ -5,17 +5,15 @@ public class SparseNode
     private int col;
     private Object object;
     private SparseNode next;
+    private SparseNode pre;
 
-    public SparseNode() {
-        col = -1;
-        object = null;
-        next = null;
+    public SparseNode(Object object, int col, SparseNode next, SparseNode pre) {
+        this.col = col;
+        this.object = object;
+        this.next = next;
+        this.pre = pre;
     }
-    public SparseNode(int c, Object o) {
-        col = c;
-        object = o;
-        next = null;
-    }
+
     public int getCol() {
         return col;
     }
@@ -25,20 +23,17 @@ public class SparseNode
     public SparseNode getNext() {
         return next;
     }
-    public void addByHead(SparseNode new_node) {
-        SparseNode node = this;
-        while(node.next != null) {
-            node = node.next;
-        }
-        node.next = new_node;
+    public SparseNode getPrev() {
+        return pre;
     }
-    public void deleteByHead(int col) {
-        SparseNode node = this;
-        while(node.next != null) {
-            if(node.next.getCol() == col) {
-                if(node.next.next == null) node.next = null;
-                else node.next = node.next.next;
-            }
-        }
+    
+    public void setObj(Object object) {
+        this.object = object;
+    }
+    public void setNext(SparseNode next) {
+        this.next = next;
+    }
+    public void setPrev(SparseNode pre) {
+        this.pre = pre;
     }
 }

@@ -1,10 +1,11 @@
 package grid.sparseboundedGrid;
 
 import info.gridworld.grid.Location;
+import info.gridworld.actor.Actor;
 import info.gridworld.grid.AbstractGrid;
 import java.util.ArrayList;
 
-public class SparseBoundedGrid extends AbstractGrid<Actor>
+public class SparseBoundedGrid<E> extends AbstractGrid<E>
 {
     private SparseNode[] head;
     private int rows;
@@ -16,7 +17,6 @@ public class SparseBoundedGrid extends AbstractGrid<Actor>
         if (cols <= 0)
             throw new IllegalArgumentException("cols <= 0");
         head = new SparseNode[rows];
-        for(int i = 0; i < rows; i++) head[0] = new SparseNode();
         rows = r;
         cols = c;
     }
@@ -39,48 +39,70 @@ public class SparseBoundedGrid extends AbstractGrid<Actor>
         ArrayList<Location> theLocations = new ArrayList<Location>();
         for(int i = 0; i < getNumRows(); i++) {
             SparseNode node = head[i];
-            while(node.getNext() != null) {
-                node = node.getNext();
+            while(node != null) {
                 Location loc = new Location(i, node.getCol());
-                if (get(loc) != null)
-                    theLocations.add(loc);
+                theLocations.add(loc);
+                node = node.getNext();
             }
         }
         return theLocations;
     }
-    public Object get(Location loc) {
+    public E get(Location loc) {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
-        SparseNode node = head[loc.getRow()];
-        while(node.getNext() != null) {
-            node = node.getNext();
-            if(node.getCol() == loc.getCol()) return node.getObject();
-        }
-        return null;
+        SparseNode node = getNode(loc);
+        if (node != null) return getObj(node);
+        else return null;
     }
 
-    public Object put(Location loc, Object obj) {
+    public E put(Location loc, E obj) {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
         if (obj == null)
             throw new NullPointerException("obj == null");
 
-        Object oldOccupant = get(loc);
-        SparseNode node = head[loc.getRow()];
-        node.addByHead(new SparseNode(loc.getCol(), obj));
+        E oldOccupant = remove(loc);
+
+        SparseNode oldhead = head[loc.getRow()];
+        SparseGridNode newhead = new SparseGridNode(obj, loc.getCol(), oldhead, null);
+        if(oldhead != null) {
+            oldhead.setPrev(newhead);
+        }
+        head[loc.getRow()] = newhead;
         return oldOccupant;
     }
 
-    public Object remove(Location loc)
+    public E remove(Location loc)
     {
         if (!isValid(loc))
             throw new IllegalArgumentException("Location " + loc
                     + " is not valid");
         
-        Object r = get(loc);
-        head[loc.getRow()].deleteByHead(loc.getCol());
+        SparseNode node = getNode(loc);
+        E r = getObj(node);
+        if(r == null) return r;
+        if(node != null) {
+            SparseNode preNode = node.getPrev();
+            SparseNode nextNode = node.getNext();
+            if(preNode != null) preNode.setNext(nextNode);
+            else if(head[loc.getRow()] != null) head[loc.getRow()] = nextNode;
+            if(nextNode != null) nextNode.setPrev(preNode);
+        }
         return r;
+    }
+
+    private SparseNode getNode(Location loc) {
+        SparseNode node = head[loc.getRow()];
+        while(node != null) {
+            if(node.getCol() == loc.getCol()) return node;
+            else node = node.getNext();
+        }
+        return null;
+    }
+    private E getObj(SparseNode node) {
+        if(node != null) return (E) node.getObject();
+        else return null;
     }
 }
