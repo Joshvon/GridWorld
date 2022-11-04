@@ -13,7 +13,7 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>
     private int rows;
     private int cols;
 
-    public SparseBOundedGrid2(int r, int c) {
+    public SparseBoundedGrid2(int r, int c) {
         if (rows <= 0)
             throw new IllegalArgumentException("rows <= 0");
         if (cols <= 0)
