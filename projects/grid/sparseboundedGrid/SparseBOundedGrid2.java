@@ -5,6 +5,7 @@ import info.gridworld.actor.Actor;
 import info.gridworld.grid.AbstractGrid;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.HashMap;
 
 public class SparseBoundedGrid2<E> extends AbstractGrid<E> 
 {

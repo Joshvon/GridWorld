@@ -1,5 +1,6 @@
 import info.gridworld.grid.AbstractGrid;
 import info.gridworld.grid.Location;
+import java.util.ArrayList;
 
 public class UnboundedGrid<E> extends AbstractGrid<E>
 {
