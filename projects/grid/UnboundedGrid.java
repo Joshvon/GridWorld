@@ -1,3 +1,5 @@
+package grid;
+
 import info.gridworld.grid.AbstractGrid;
 import info.gridworld.grid.Location;
 import java.util.ArrayList;
