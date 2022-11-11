@@ -71,20 +71,23 @@ public class MazeBug extends Bug {
 		if (gr == null)
 			return null;
 		ArrayList<Location> valid = new ArrayList<Location>();
-		for(Location location : gr.getEmptyAdjacentLocations(loc)) {
-			if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
-				valid.add(location);
-		}
-		for(Actor actor : gr.getNeighbors(loc)) {
-			if(actor instanceof Flower) {
-				Location location = actor.getLocation();
+		if(gr.getEmptyAdjacentLocations(loc).size() > 0){
+			for(Location location : gr.getEmptyAdjacentLocations(loc)) 
 				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
 					valid.add(location);
-			}
-			if(actor instanceof Rock && actor.getColor() == Color.RED) {
-				Location location = actor.getLocation();
-				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
-					isEnd = true;
+		}
+		if(gr.getNeighbors(loc).size() > 0) {
+			for(Actor actor : gr.getNeighbors(loc)) {
+				if(actor instanceof Flower) {
+					Location location = actor.getLocation();
+					if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
+						valid.add(location);
+				}
+				if(actor instanceof Rock && actor.getColor() == Color.RED) {
+					Location location = actor.getLocation();
+					if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
+						isEnd = true;
+				}
 			}
 		}
 		return valid;
@@ -102,14 +105,16 @@ public class MazeBug extends Bug {
 			return false;
 		Location loc = getLocation();
 		ArrayList<Location> locs = getValid(loc);
-		for(Location location : locs) {
-			if(hasVisited.contains(location)) locs.remove(location);
-		}
 		if(locs.size() > 0) {
-			int index = (int) (Math.random()* locs.size());
-			this.next = locs.get(index);
-			locs.add(loc);
-			crossLocation.push(locs);
+			for(Location location : locs) {
+				if(hasVisited.contains(location)) locs.remove(location);
+			}
+			if(locs.size() > 0) {
+				int index = (int) (Math.random()* locs.size());
+				this.next = locs.get(index);
+				locs.add(loc);
+				crossLocation.push(locs);
+			}
 		}
 		else {
 			ArrayList<Location> l = crossLocation.pop();
