@@ -3,6 +3,7 @@ package info.gridworld.maze;
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Flower;
+import info.gridworld.actor.Rock;
 import info.gridworld.grid.*;
 
 import java.awt.Color;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 import java.util.Stack;
+import java.util.HashSet;
 
 import javax.swing.JOptionPane;
 
@@ -25,7 +27,7 @@ public class MazeBug extends Bug {
 	public Integer stepCount = 0;
 	boolean hasShown = false;//final message has been shown
 
-	private Set<E> hasVisited = new HashSet();
+	private Set<Location> hasVisited = new HashSet();
 
 	/**
 	 * Constructs a box bug that traces a square of a given side length
