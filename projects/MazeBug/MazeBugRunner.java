@@ -1,4 +1,4 @@
-package info.gridworld.maze;
+package maze;
 
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
