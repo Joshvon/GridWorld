@@ -15,9 +15,9 @@ public class FinalMazeBugRunner
 {
     public static void main(String[] args)
     {
-        UnboundedGrid ugr=new UnboundedGrid();
+        // UnboundedGrid ugr=new UnboundedGrid();
         ActorWorld world = new ActorWorld(); 
-        world.addGridClass(ugr);
+        world.addGridClass("UnboundedGrid");
         /*world.add(new Location(-1,-1),new MazeBug());
         for(int i=0;i<=40;i++){
         	for(int j=0;j<=40;j+=40){
