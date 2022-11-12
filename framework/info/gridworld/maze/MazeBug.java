@@ -81,7 +81,7 @@ public class MazeBug extends Bug {
 				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
 					valid.add(location);
 			}
-			if(actor instanceof Rock && actor.getColor() == Color.RED) {
+			if(actor instanceof Rock && actor.getColor().equals(Color.RED)) {
 				Location location = actor.getLocation();
 				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
 					isEnd = true;
@@ -103,13 +103,13 @@ public class MazeBug extends Bug {
 			return false;
 		Location loc = getLocation();
 		ArrayList<Location> locs = getValid(loc);
-		for(int i = 0; i < locs.size(); i++) {
+		for(int i = locs.size() -1; i >= 0; i--) {
 			Location location = locs.get(i);
 			if(hasVisited.contains(location)) locs.remove(i);
 		}
 		if(locs.size() > 0) {
 			int index = (int) (Math.random()* locs.size());
-			this.next = locs.get(index);
+			next = locs.get(index);
 			locs.add(loc);
 			crossLocation.push(locs);
 		}
