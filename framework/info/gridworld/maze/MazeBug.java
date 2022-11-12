@@ -71,23 +71,24 @@ public class MazeBug extends Bug {
 		if (gr == null)
 			return null;
 		ArrayList<Location> valid = new ArrayList<Location>();
-		if(gr.getEmptyAdjacentLocations(loc).size() > 0){
-			for(Location location : gr.getEmptyAdjacentLocations(loc)) 
-				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
+		ArrayList<Location> emptyLocations = gr.getEmptyAdjacentLocations(loc);
+		ArrayList<Actor> neighbors = gr.getNeighbors(loc);
+		for(int i = 0; i < emptyLocations.size(); i++) {
+			Location location = emptyLocations.get(i);
+			if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
 					valid.add(location);
 		}
-		if(gr.getNeighbors(loc).size() > 0) {
-			for(Actor actor : gr.getNeighbors(loc)) {
-				if(actor instanceof Flower) {
-					Location location = actor.getLocation();
-					if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
-						valid.add(location);
-				}
-				if(actor instanceof Rock && actor.getColor() == Color.RED) {
-					Location location = actor.getLocation();
-					if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
-						isEnd = true;
-				}
+		for(int i = 0; i < neighbors.size(); i++) {
+			Actor actor = neighbors.get(i);
+			if(actor instanceof Flower) {
+				Location location = actor.getLocation();
+				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
+					valid.add(location);
+			}
+			if(actor instanceof Rock && actor.getColor() == Color.RED) {
+				Location location = actor.getLocation();
+				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
+					isEnd = true;
 			}
 		}
 		return valid;
