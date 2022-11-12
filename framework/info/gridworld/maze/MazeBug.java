@@ -71,15 +71,11 @@ public class MazeBug extends Bug {
 		if (gr == null)
 			return null;
 		ArrayList<Location> valid = new ArrayList<Location>();
-		ArrayList<Location> emptyLocations = gr.getEmptyAdjacentLocations(loc);
-		ArrayList<Actor> neighbors = gr.getNeighbors(loc);
-		for(int i = 0; i < emptyLocations.size(); i++) {
-			Location location = emptyLocations.get(i);
+		for(Location location : gr.getEmptyAdjacentLocations(loc)) 
 			if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
-					valid.add(location);
-		}
-		for(int i = 0; i < neighbors.size(); i++) {
-			Actor actor = neighbors.get(i);
+				valid.add(location);
+
+		for(Actor actor : gr.getNeighbors(loc)) {
 			if(actor instanceof Flower) {
 				Location location = actor.getLocation();
 				if(location.getRow() == loc.getRow() || location.getCol() == loc.getCol())
@@ -91,6 +87,7 @@ public class MazeBug extends Bug {
 					isEnd = true;
 			}
 		}
+
 		return valid;
 	}
 
@@ -106,16 +103,15 @@ public class MazeBug extends Bug {
 			return false;
 		Location loc = getLocation();
 		ArrayList<Location> locs = getValid(loc);
+		for(int i = 0; i < locs.size(); i++) {
+			Location location = locs.get(i);
+			if(hasVisited.contains(location)) locs.remove(i);
+		}
 		if(locs.size() > 0) {
-			for(Location location : locs) {
-				if(hasVisited.contains(location)) locs.remove(location);
-			}
-			if(locs.size() > 0) {
-				int index = (int) (Math.random()* locs.size());
-				this.next = locs.get(index);
-				locs.add(loc);
-				crossLocation.push(locs);
-			}
+			int index = (int) (Math.random()* locs.size());
+			this.next = locs.get(index);
+			locs.add(loc);
+			crossLocation.push(locs);
 		}
 		else {
 			ArrayList<Location> l = crossLocation.pop();
