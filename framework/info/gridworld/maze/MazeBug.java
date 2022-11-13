@@ -27,7 +27,7 @@ public class MazeBug extends Bug {
 	public Integer stepCount = 0;
 	boolean hasShown = false;//final message has been shown
 
-	private Set<Location> hasVisited = new HashSet();
+	protected Set<Location> hasVisited = new HashSet();
 
 	/**
 	 * Constructs a box bug that traces a square of a given side length
