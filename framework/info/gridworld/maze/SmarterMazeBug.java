@@ -74,9 +74,10 @@ public class SmarterMazeBug extends MazeBug{
                 validloc[2] = locs.get(i);
             }
         }
-        int target = 0;
+        int target = -1;
         for(int i = 0; i < validloc.length; i++) {
             if(validloc[i] != null) {
+                if(target == -1) target = i;
                 if(factor[i] > factor[target]) target = i;
             }
         }
