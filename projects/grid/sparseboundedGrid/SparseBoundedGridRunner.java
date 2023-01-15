@@ -3,6 +3,7 @@ package grid.sparseboundedGrid;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
+import SparseBoundedGrid;
 
 public class SparseBoundedGridRunner {
     @SuppressWarnings("unchecked")
