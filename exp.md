@@ -1,5 +1,6 @@
 ## GridWorld
 Ubuntu22.04.1配置Java8环境
+[项目仓库](https://github.com/Joshvon/GridWorld)
 [TOC]
 
 ---
@@ -22,7 +23,7 @@ Ubuntu22.04.1配置Java8环境
 
 `8. `flower会变颜色
 
-`9. `好像没有
+`9. `没有
 
 `10. `Bug碰到flower不会变化方向，碰到rock会
 
